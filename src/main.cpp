@@ -59,9 +59,8 @@ int main() {
   player_init();
   player_sfx_init();
 
-  auto initialScreen = SaveFile::data.didCalibrate
-                           ? GameState::Screen::START
-                           : GameState::Screen::CALIBRATION;
+  auto initialScreen = GameState::Screen::START;
+  
   if (SaveFile::data.isInsideFinal)
     initialScreen = GameState::Screen::GLITCH_OUTRO;
 
@@ -105,9 +104,9 @@ bn::unique_ptr<Scene> setNextScene(GameState::Screen nextScreen) {
 
   switch (nextScreen) {
     case GameState::Screen::CONTROLS:
-      return bn::unique_ptr{(Scene*)new ControlsScene(fs, continuationScreen)};
+      // return bn::unique_ptr{(Scene*)new ControlsScene(fs, continuationScreen)};
     case GameState::Screen::CALIBRATION:
-      return bn::unique_ptr{(Scene*)new CalibrationScene(fs)};
+      // return bn::unique_ptr{(Scene*)new CalibrationScene(fs)};
     case GameState::Screen::START:
       return bn::unique_ptr{(Scene*)new StartScene(fs)};
     case GameState::Screen::SELECTION:

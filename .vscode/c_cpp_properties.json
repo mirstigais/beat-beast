@@ -3,7 +3,7 @@
         {
             "name": "Butano",
             "includePath": [
-                "${workspaceFolder}/../butano/butano/include",
+                "${workspaceFolder}/butano/include",
                 "${workspaceFolder}/src/**/*",
                 "${workspaceFolder}/build",
                 "/opt/devkitpro/devkitARM/arm-none-eabi/include/**",

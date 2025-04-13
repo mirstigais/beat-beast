@@ -23,10 +23,10 @@ class StartScene : public Scene {
   bn::unique_ptr<Menu> menu;
   bn::unique_ptr<SettingsMenu> settingsMenu;
   bn::unique_ptr<Menu> difficultyMenu;
-  bn::sprite_ptr logo1;
-  bn::sprite_ptr logo2;
-  bn::sprite_ptr logo3;
-  bn::sprite_ptr logo4;
+  // bn::sprite_ptr logo1;
+  // bn::sprite_ptr logo2;
+  // bn::sprite_ptr logo3;
+  // bn::sprite_ptr logo4;
   bn::fixed videoFrame = 0;
   int lastBeat = 0;
   bn::fixed extraSpeed = 0;
