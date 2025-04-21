@@ -7,8 +7,7 @@ namespace GameState {
 
 enum Screen {
   NO,
-  CONTROLS,
-  CALIBRATION,
+  OPENING,
   START,
   SELECTION,
   STORY,

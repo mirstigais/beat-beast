@@ -7,13 +7,12 @@
 #include "scenes/BossGlitchScene.h"
 #include "scenes/BossRifferScene.h"
 #include "scenes/BossWizardScene.h"
-#include "scenes/CalibrationScene.h"
-#include "scenes/ControlsScene.h"
 #include "scenes/CreditsScene.h"
 #include "scenes/PleaseRestartTheGame.h"
 #include "scenes/SelectionScene.h"
 #include "scenes/StartScene.h"
 #include "scenes/StoryScene.h"
+#include "scenes/OpeningScene.h"
 #include "scenes/TutorialScene.h"
 #include "utils/Rumble.h"
 #include "utils/gbfs/gbfs.h"
@@ -59,13 +58,10 @@ int main() {
   player_init();
   player_sfx_init();
 
-  auto initialScreen = GameState::Screen::START;
-  
-  if (SaveFile::data.isInsideFinal)
-    initialScreen = GameState::Screen::GLITCH_OUTRO;
+  auto initialScreen = GameState::Screen::OPENING;
 
   GameState::data.currentScreen = initialScreen;
-  scene = setNextScene(GameState::Screen::CONTROLS);
+  scene = setNextScene(GameState::Screen::OPENING);
   scene->get()->init();
 
   while (true) {
@@ -103,10 +99,8 @@ bn::unique_ptr<Scene> setNextScene(GameState::Screen nextScreen) {
   GameState::data.currentScreen = nextScreen;
 
   switch (nextScreen) {
-    case GameState::Screen::CONTROLS:
-      // return bn::unique_ptr{(Scene*)new ControlsScene(fs, continuationScreen)};
-    case GameState::Screen::CALIBRATION:
-      // return bn::unique_ptr{(Scene*)new CalibrationScene(fs)};
+    case GameState::Screen::OPENING:
+      return bn::unique_ptr{(Scene*)new OpeningScene(fs)};
     case GameState::Screen::START:
       return bn::unique_ptr{(Scene*)new StartScene(fs)};
     case GameState::Screen::SELECTION:
