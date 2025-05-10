@@ -9,6 +9,7 @@ enum Screen {
   NO,
   OPENING,
   START,
+  PLAYER,
   SELECTION,
   STORY,
   TUTORIAL,

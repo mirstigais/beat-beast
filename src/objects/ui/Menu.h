@@ -9,6 +9,8 @@
 
 class Menu {
  public:
+  bool isActive() const { return active; }
+
   struct Option {
     bn::string<32> text;
     bool bDefault = false;
@@ -50,6 +52,7 @@ class Menu {
   bn::vector<bn::sprite_ptr, 64> accentTextSprites;
   bn::optional<bn::vector<Option, 10>> options;
   bn::sprite_ptr square;
+  bool active = false;
   unsigned selectedOption = 0;
   int confirmedOption = -1;
   bn::fixed targetScaleX = 1.5;

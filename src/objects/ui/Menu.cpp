@@ -34,6 +34,7 @@ void Menu::start(bn::vector<Option, 32> _options,
   options = _options;
   selectedOption = _selectedOption;
   confirmedOption = -1;
+  active = true;
   targetScaleX = _targetScaleX;
   targetScaleY = _targetScaleY;
   positionX = _positionX;
@@ -116,6 +117,7 @@ void Menu::stop() {
   normalTextSprites.clear();
   accentTextSprites.clear();
   confirmedOption = -1;
+  active = false;
 }
 
 void Menu::pauseSound() {

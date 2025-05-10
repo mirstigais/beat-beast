@@ -32,8 +32,10 @@ class StartScene : public Scene {
 
   void updateVideo();
   void processMenuOption(int option);
+  void processSongSelectMenuOption(int option);
   void processDifficultyMenuOption(int option);
   void start();
+  void initOpeningMenu();
 };
 
 #endif  // START_SCENE_H

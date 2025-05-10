@@ -6,6 +6,7 @@
 #include "../player/player.h"
 #include "../savefile/SaveFile.h"
 #include "../utils/Math.h"
+#include "../objects/song/SongList.h"
 
 #include "bn_blending.h"
 #include "bn_keypad.h"
@@ -30,10 +31,7 @@ StartScene::StartScene(const GBFS_FILE* _fs)
 }
 
 void StartScene::init() {
-  bn::vector<Menu::Option, 10> options;
-  options.push_back(Menu::Option{.text = "Play"});
-  options.push_back(Menu::Option{.text = "Credits"});
-  menu->start(options, false);
+  initOpeningMenu();
 
   if (!PlaybackState.isLooping) {
     player_playGSM("battery_acid.gsm");
@@ -41,12 +39,32 @@ void StartScene::init() {
   }
 }
 
+void StartScene::initOpeningMenu() {
+  bn::vector<Menu::Option, 10> options;
+  options.push_back(Menu::Option{.text = "Play"});
+  options.push_back(Menu::Option{.text = "Credits"});
+  menu->start(options, false);
+}
+
 void StartScene::update() {
   if (!credits) {
-    menu->update();
-    if (menu->hasConfirmedOption()) {
-      auto confirmedOption = menu->receiveConfirmedOption();
-      processMenuOption(confirmedOption);
+    if (menu->isActive()) {
+      menu->update();
+
+      if (menu->hasConfirmedOption()) {
+        auto confirmedOption = menu->receiveConfirmedOption();
+        processMenuOption(confirmedOption);
+      }
+    } else {
+      songSelectMenu->update();
+
+      if(bn::keypad::b_pressed()) {
+        songSelectMenu->stop();
+        initOpeningMenu();
+      } else if (songSelectMenu->hasConfirmedOption()) {
+        auto confirmedOption = songSelectMenu->receiveConfirmedOption();
+        processSongSelectMenuOption(confirmedOption);
+      }
     }
   }
 
@@ -98,8 +116,37 @@ void StartScene::processMenuOption(int option) {
       menu->questionSound();
 
       bn::vector<Menu::Option, 10> options;
-      options.push_back(Menu::Option{.text = "DDD"});
-      options.push_back(Menu::Option{.text = "yyyy"});
+
+      for (size_t i = 0; i < SongList::songCount; ++i) {
+          options.push_back(Menu::Option{.text = SongList::songList[i].name});
+      }
+
+      songSelectMenu->start(options, false);
+      break;
+    }
+    case 1: {  // Credits
+      player_playGSM("bonus.gsm");
+      credits = true;
+      break;
+    }
+    default: {
+    }
+  }
+}
+
+void StartScene::processSongSelectMenuOption(int option) {
+  BN_LOG(option);
+  switch (option) {
+    case 0: {  // Start
+      songSelectMenu->stop();
+      songSelectMenu->questionSound();
+
+      bn::vector<Menu::Option, 10> options;
+
+      for (size_t i = 0; i < SongList::songCount; ++i) {
+          options.push_back(Menu::Option{.text = SongList::songList[i].name});
+      }
+
       songSelectMenu->start(options, false);
       break;
     }

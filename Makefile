@@ -46,6 +46,7 @@ SOURCES     	:=  src \
 					src/objects/wizard \
 					src/objects/riffer \
 					src/objects/glitch \
+					src/objects/song \
 					src/utils \
 					src/utils/gbfs \
 					src/phys \
