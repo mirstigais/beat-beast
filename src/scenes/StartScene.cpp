@@ -109,7 +109,6 @@ void StartScene::updateVideo() {
 }
 
 void StartScene::processMenuOption(int option) {
-  BN_LOG(option);
   switch (option) {
     case 0: {  // Start
       menu->stop();
@@ -136,28 +135,11 @@ void StartScene::processMenuOption(int option) {
 
 void StartScene::processSongSelectMenuOption(int option) {
   BN_LOG(option);
-  switch (option) {
-    case 0: {  // Start
-      songSelectMenu->stop();
-      songSelectMenu->questionSound();
-
-      bn::vector<Menu::Option, 10> options;
-
-      for (size_t i = 0; i < SongList::songCount; ++i) {
-          options.push_back(Menu::Option{.text = SongList::songList[i].name});
-      }
-
-      songSelectMenu->start(options, false);
-      break;
-    }
-    case 1: {  // Credits
-      player_playGSM("bonus.gsm");
-      credits = true;
-      break;
-    }
-    default: {
-    }
-  }
+  
+  songSelectMenu->stop();
+  songSelectMenu->questionSound();
+  GameState::data.currentSong = SongList::songList[option];
+  setNextScreen(GameState::Screen::PLAYER);
 }
 
 void StartScene::start() {

@@ -13,6 +13,7 @@
 #include "scenes/StartScene.h"
 #include "scenes/StoryScene.h"
 #include "scenes/OpeningScene.h"
+#include "scenes/PlayerScene.h"
 #include "scenes/TutorialScene.h"
 #include "utils/Rumble.h"
 #include "utils/gbfs/gbfs.h"
@@ -58,9 +59,7 @@ int main() {
   player_init();
   player_sfx_init();
 
-  auto initialScreen = GameState::Screen::OPENING;
-
-  GameState::data.currentScreen = initialScreen;
+  GameState::data.currentScreen = GameState::Screen::OPENING;
   scene = setNextScene(GameState::Screen::OPENING);
   scene->get()->init();
 
@@ -103,6 +102,8 @@ bn::unique_ptr<Scene> setNextScene(GameState::Screen nextScreen) {
       return bn::unique_ptr{(Scene*)new OpeningScene(fs)};
     case GameState::Screen::START:
       return bn::unique_ptr{(Scene*)new StartScene(fs)};
+    case GameState::Screen::PLAYER:
+      return bn::unique_ptr{(Scene*)new PlayerScene(fs)};
     case GameState::Screen::SELECTION:
       return bn::unique_ptr{(Scene*)new SelectionScene(fs)};
     case GameState::Screen::STORY:

@@ -2,6 +2,7 @@
 #define GAME_STATE_H
 
 #include "SaveFile.h"
+#include "../objects/song/SongList.h"
 
 namespace GameState {
 
@@ -24,12 +25,13 @@ enum Screen {
 
 struct GameStateData {
   Screen currentScreen = Screen::START;
-  bool isPlaying = false;
+  SongList::Song currentSong = SongList::songList[0];
   SaveFile::LevelProgress currentLevelProgress;
 
   bool newRecordHealth = false;
   bool newRecordDamage = false;
   bool newRecordSync = false;
+  bool isPlaying = false;
 };
 
 void saveWin();
