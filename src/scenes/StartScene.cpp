@@ -133,12 +133,11 @@ void StartScene::processMenuOption(int option) {
   }
 }
 
-void StartScene::processSongSelectMenuOption(int option) {
-  BN_LOG(option);
-  
+void StartScene::processSongSelectMenuOption(int option) {  
   songSelectMenu->stop();
   songSelectMenu->questionSound();
   GameState::data.currentSong = SongList::songList[option];
+  GameState::data.currentSongIndex = option;
   setNextScreen(GameState::Screen::PLAYER);
 }
 

@@ -1,17 +1,18 @@
 #include "SongList.h"
 #include <cstddef>
+#include "bn_array.h"
 
 namespace SongList {
     const Song songList[] = {
         {
-            "Battery acid",
-            "battery_acid.gsm",
-            120,
+        .name = "Battery acid",
+        .filename = "battery_acid.gsm",
+        .length = 120,
         },
         {
-            "Another song",
-            "lazer.gsm",
-            120,
+        .name = "Another song",
+        .filename = "lazer.gsm",
+        .length = 120,
         },
     };
 

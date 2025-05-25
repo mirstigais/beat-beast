@@ -17,9 +17,13 @@ class PlayerScene : public Scene {
   bn::sprite_text_generator textGeneratorAccent;
   bn::fixed videoFrame = 0;
   bn::fixed extraSpeed = 0;
+  bn::vector<bn::sprite_ptr, 32> songTextSprites;
+  bn::vector<bn::sprite_ptr, 32> timeTextSprites;
 
   void updateVideo();
   void start();
+  void updatePlayerCounter();
+  void setCurrentSong(SongList::Song song);
 };
 
 #endif  // PLAYER_SCENE_H

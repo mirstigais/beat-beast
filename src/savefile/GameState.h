@@ -26,6 +26,7 @@ enum Screen {
 struct GameStateData {
   Screen currentScreen = Screen::START;
   SongList::Song currentSong = SongList::songList[0];
+  int currentSongIndex = 0;
   SaveFile::LevelProgress currentLevelProgress;
 
   bool newRecordHealth = false;
