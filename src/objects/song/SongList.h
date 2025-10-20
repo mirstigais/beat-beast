@@ -3,7 +3,7 @@
 #define SONG_LIST_H
 
 namespace SongList {
-    #define MAX_NAME_LEN 32
+    #define MAX_NAME_LEN 40
 
     struct Song {
         char name[MAX_NAME_LEN];

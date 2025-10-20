@@ -24,8 +24,8 @@ PlayerScene::PlayerScene(const GBFS_FILE* _fs)
 }
 
 void PlayerScene::init() {
- 	SongList::Song currentSong = GameState::data.currentSong;
-	setCurrentSong(currentSong);
+ 	size_t current_index = GameState::data.currentSongIndex;
+	setCurrentSong(current_index);
 	// player_playGSM(currentSong.filename);
 
 
@@ -35,12 +35,13 @@ void PlayerScene::init() {
 //   }
 }
 
-void PlayerScene::setCurrentSong(SongList::Song song) {
-	GameState::data.currentSong = song;
-	player_playGSM(song.filename);
+void PlayerScene::setCurrentSong(size_t index) {
+    GameState::data.currentSongIndex = index;
+    GameState::data.currentSong = SongList::songList[index];
+    player_playGSM(GameState::data.currentSong.filename);
 
 	songTextSprites.clear();
- 	textGenerator.generate({-90, -10}, song.name, songTextSprites);
+ 	textGenerator.generate({-90, -10}, GameState::data.currentSong.name, songTextSprites);
 }
 
 void PlayerScene::update() {
@@ -59,27 +60,13 @@ void PlayerScene::update() {
 	}
 
 	if (bn::keypad::right_pressed()) {
-		size_t current_index = GameState::data.currentSongIndex;
-
-		if (current_index < SongList::songCount - 1) {
-			current_index++;
-		} else {
-			current_index = 0;
-		}
-
-		setCurrentSong(SongList::songList[current_index]);
+		size_t current_index = (GameState::data.currentSongIndex + 1) % SongList::songCount;
+		setCurrentSong(current_index);
 	}
 
 	if (bn::keypad::left_pressed()) {
-		size_t current_index = GameState::data.currentSongIndex;
-
-		if (current_index != 0) {
-			current_index--;
-		} else {
-			current_index = 0;
-		}
-
-		setCurrentSong(SongList::songList[current_index]);
+		size_t current_index = (GameState::data.currentSongIndex + SongList::songCount - 1) % SongList::songCount;
+		setCurrentSong(current_index);
 	}
   
 }

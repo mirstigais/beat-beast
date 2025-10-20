@@ -23,7 +23,7 @@ class PlayerScene : public Scene {
   void updateVideo();
   void start();
   void updatePlayerCounter();
-  void setCurrentSong(SongList::Song song);
+  void setCurrentSong(size_t index);
 };
 
 #endif  // PLAYER_SCENE_H
