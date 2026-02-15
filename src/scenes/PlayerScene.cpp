@@ -13,7 +13,7 @@
 #include "../objects/song/SongList.h"
 // #include <../objects/song/SongList.h>
 
-bool paused = false;
+#define SCROLL_SPEED 0.5
 
 PlayerScene::PlayerScene(const GBFS_FILE* _fs)
     : Scene(GameState::Screen::PLAYER, _fs),
@@ -40,8 +40,40 @@ void PlayerScene::setCurrentSong(size_t index) {
     GameState::data.currentSong = SongList::songList[index];
     player_playGSM(GameState::data.currentSong.filename);
 
-	songTextSprites.clear();
- 	textGenerator.generate({-90, -10}, GameState::data.currentSong.name, songTextSprites);
+    songTextSprites.clear();
+    songTextOriginalX.clear();   // clear old original X positions
+    songTextOriginalY.clear();
+
+    int single_width = textGenerator.width(GameState::data.currentSong.name);
+    
+    if (single_width > 180) {
+        // Continuous scrolling setup
+        // Use larger buffer to avoid truncation of long names when duplicated
+        bn::string<128> double_text(GameState::data.currentSong.name);
+        double_text += "   ";
+        
+        // Calculate the cycle width based on the FIRST part of the string including spacing
+        text_cycle_width = textGenerator.width(double_text);
+        
+        double_text += GameState::data.currentSong.name;
+        textGenerator.generate({-90, -10}, double_text, songTextSprites);
+        
+        scroll_enabled = true;
+    } else {
+        // Static text
+        textGenerator.generate({-90, -10}, GameState::data.currentSong.name, songTextSprites);
+        text_cycle_width = 0;
+        scroll_enabled = false;
+    }
+
+    // save each sprite's initial center X
+    for (auto& s : songTextSprites) {
+        songTextOriginalX.push_back(s.x());
+        songTextOriginalY.push_back(s.y());
+    }
+
+    song_text_width = single_width;
+    scroll_x = 0;
 }
 
 void PlayerScene::update() {
@@ -53,13 +85,10 @@ void PlayerScene::update() {
 	}
 
 	if (bn::keypad::a_pressed()) {
-		if (paused)
-		player_setPause(paused = false);
-		else
 		player_setPause(paused = !paused);
 	}
 
-	if (bn::keypad::right_pressed()) {
+	if (bn::keypad::right_pressed() || song_finished()) {
 		size_t current_index = (GameState::data.currentSongIndex + 1) % SongList::songCount;
 		setCurrentSong(current_index);
 	}
@@ -68,7 +97,20 @@ void PlayerScene::update() {
 		size_t current_index = (GameState::data.currentSongIndex + SongList::songCount - 1) % SongList::songCount;
 		setCurrentSong(current_index);
 	}
-  
+
+    if(scroll_enabled && !paused)
+    {
+        scroll_x -= SCROLL_SPEED;
+
+        if (scroll_x <= -text_cycle_width) {
+            scroll_x += text_cycle_width;
+        }
+
+        for(int i = 0; i < songTextSprites.size(); ++i)
+        {
+            songTextSprites[i].set_x(songTextOriginalX[i] + scroll_x);
+        }
+    }
 }
 
 bn::string<32> format_hms(int h, int m, int s) {
@@ -119,6 +161,10 @@ void PlayerScene::updatePlayerCounter() {
 
 	timeTextSprites.clear();
 	textGeneratorAccent.generate({-90, 10}, time_string, timeTextSprites);
+}
+
+bool PlayerScene::song_finished() {
+    return !player_isPlaying() && !paused;
 }
 
 void PlayerScene::updateVideo() {

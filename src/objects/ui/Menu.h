@@ -48,9 +48,9 @@ class Menu {
  private:
   bn::sprite_text_generator normalTextGenerator;
   bn::sprite_text_generator accentTextGenerator;
-  bn::vector<bn::sprite_ptr, 64> normalTextSprites;
+  bn::vector<bn::sprite_ptr, 96> normalTextSprites;
   bn::vector<bn::sprite_ptr, 64> accentTextSprites;
-  bn::optional<bn::vector<Option, 10>> options;
+  bn::optional<bn::vector<Option, 32>> options;
   bn::sprite_ptr square;
   bool active = false;
   unsigned selectedOption = 0;
@@ -59,6 +59,10 @@ class Menu {
   bn::fixed targetScaleY = 1.5;
   bn::fixed positionX = 0;
   bn::fixed positionY = 0;
+  int scrollOffset = 0;
+  int maxVisibleOptions = 5;
+  int textScrollCounter = 0;
+  int textScrollTimer = 0;
 
   void draw();
   void drawSelected();

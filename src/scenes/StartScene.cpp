@@ -114,7 +114,7 @@ void StartScene::processMenuOption(int option) {
       menu->stop();
       menu->questionSound();
 
-      bn::vector<Menu::Option, 10> options;
+      bn::vector<Menu::Option, 32> options;
 
       for (size_t i = 0; i < SongList::songCount; ++i) {
           options.push_back(Menu::Option{.text = SongList::songList[i].name});

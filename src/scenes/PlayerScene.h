@@ -17,13 +17,24 @@ class PlayerScene : public Scene {
   bn::sprite_text_generator textGeneratorAccent;
   bn::fixed videoFrame = 0;
   bn::fixed extraSpeed = 0;
-  bn::vector<bn::sprite_ptr, 32> songTextSprites;
+  bn::vector<bn::sprite_ptr, 96> songTextSprites;
   bn::vector<bn::sprite_ptr, 32> timeTextSprites;
+  bn::vector<bn::fixed, 96> songTextOriginalX;
+  bn::vector<bn::fixed, 96> songTextOriginalY;
+
+
+  int text_cycle_width = 0;
+
+  bool paused = false;
+  bool scroll_enabled = false;
+  bn::fixed scroll_x = 0;
+  int song_text_width = 0;
 
   void updateVideo();
   void start();
   void updatePlayerCounter();
   void setCurrentSong(size_t index);
+  bool song_finished();
 };
 
 #endif  // PLAYER_SCENE_H
