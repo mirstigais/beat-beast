@@ -11,7 +11,7 @@ INPUT_VIDEO_NAME=${INPUT_VIDEO%.*}
 
 mkdir -p converted_video
 
-ffmpeg -y -i "$INPUT_VIDEO" -r 30 "converted_video/output_%05d.png"
+ffmpeg -y -i "$INPUT_VIDEO" -r 30 "converted_video/${INPUT_VIDEO_NAME}_output_%05d.png"
 for file in converted_video/*.png; do
   convert $file -resize 240x160! -colors 253 -unique-colors tmpPalette.bmp && convert black.bmp tmpPalette.bmp +append tmpPalette.bmp && convert $file -resize 240x160! -background black -gravity northwest -extent 256x256 -colors 253 -remap tmpPalette.bmp "$file" && rm tmpPalette.bmp
 done
@@ -34,4 +34,4 @@ EOF
 done
 
 echo "Generating .cpp and .h"
-bash generateVideoCPP.sh "$INPUT_VIDEO_NAME" "converted_video/" "converted_video/${INPUT_VIDEO_NAME}.cpp"
+bash generateVideoCPP.sh "$INPUT_VIDEO_NAME" "converted_video/" "converted_video/${INPUT_VIDEO_NAME}.cpp" "$INPUT_VIDEO_NAME"

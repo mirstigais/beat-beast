@@ -3,9 +3,10 @@
 FILE_NAME="$1"
 FRAME_PATH="$2"
 OUT_FILE="$3"
+INPUT_VIDEO_NAME="$4"
 
-if [ -z "$FILE_NAME" ] || [ -z "$FRAME_PATH" ] || [ -z "$OUT_FILE" ]; then
-    echo "Usage: $0 <file_name> <frame_path> <out_file>"
+if [ -z "$FILE_NAME" ] || [ -z "$FRAME_PATH" ] || [ -z "$OUT_FILE" ] || [ -z "$INPUT_VIDEO_NAME" ]; then
+    echo "Usage: $0 <file_name> <frame_path> <out_file> <input_video_name>"
     exit 1
 fi
 
@@ -18,14 +19,14 @@ NUM_FRAMES=${#FRAME_FILES[@]}
 
 # Write headers
 {
-  echo "#include \"$FILE_NAME\""
+  echo "#include \"$FILE_NAME.h\""
   echo ''
   echo '#include "bn_array.h"'
   echo ''
   for bmp_file in "${FRAME_FILES[@]}"; do
     frame_num=$(basename "$bmp_file" | sed -E 's/[^0-9]*([0-9]+)\.bmp/\1/')
     frame_num=$((10#$frame_num))
-		printf '#include "bn_regular_bg_items_output_%05d.h"\n' "$frame_num"
+		printf '#include "bn_regular_bg_items_%s_output_%05d.h"\n' "$INPUT_VIDEO_NAME" "$frame_num"
   done
   echo ''
   echo "const bn::array<bn::regular_bg_item, $NUM_FRAMES> frames = {"
@@ -37,9 +38,9 @@ for index in "${!FRAME_FILES[@]}"; do
   frame_num=$(basename "$bmp_file" | sed -E 's/[^0-9]*([0-9]+)\.bmp/\1/')
 	frame_num=$((10#$frame_num))
   if [ "$index" -eq "$((NUM_FRAMES - 1))" ]; then
-    printf '    bn::regular_bg_items::output_%05d\n' "$frame_num" >> "$OUT_FILE"
+    printf "    bn::regular_bg_items::${INPUT_VIDEO_NAME}_output_%05d\n" "$frame_num" >> "$OUT_FILE"
   else
-    printf '    bn::regular_bg_items::output_%05d,\n' "$frame_num" >> "$OUT_FILE"
+    printf "    bn::regular_bg_items::${INPUT_VIDEO_NAME}_output_%05d,\n" "$frame_num" >> "$OUT_FILE"
   fi
 done
 
@@ -47,7 +48,7 @@ done
 cat <<EOF >> "$OUT_FILE"
 };
 
-bn::regular_bg_item StartVideo::getFrame(unsigned frame) {
+bn::regular_bg_item ${FILE_NAME}::getFrame(unsigned frame) {
   return frames[frame];
 }
 EOF
@@ -61,7 +62,9 @@ cat <<EOF > "$OUT_HEADER"
 
 #include "bn_regular_bg_item.h"
 
-namespace StartVideo {
+namespace ${FILE_NAME} {
+
+constexpr unsigned framesCount = ${NUM_FRAMES};
 
 bn::regular_bg_item getFrame(unsigned frame);
 
