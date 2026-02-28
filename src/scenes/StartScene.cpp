@@ -78,7 +78,6 @@ void StartScene::update() {
     extraSpeed = 10;
 
   if (isNewBeat && !credits) {
-    // horse->jump();
   }
 
   updateVideo();
@@ -142,5 +141,4 @@ void StartScene::processSongSelectMenuOption(int option) {
 }
 
 void StartScene::start() {
-  setNextScreen(GameState::Screen::SELECTION);
 }

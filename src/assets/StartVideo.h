@@ -5,6 +5,8 @@
 
 namespace StartVideo {
 
+constexpr unsigned framesCount = 30;
+
 bn::regular_bg_item getFrame(unsigned frame);
 
 }  // namespace StartVideo

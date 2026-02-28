@@ -37,15 +37,9 @@ SOURCES     	:=  src \
 					src/assets/fonts \
 					src/player \
 					src/player/core \
-					src/rhythm \
-					src/rhythm/models \
 					src/scenes \
 					src/objects \
 					src/objects/ui \
-					src/objects/dj \
-					src/objects/wizard \
-					src/objects/riffer \
-					src/objects/glitch \
 					src/objects/song \
 					src/utils \
 					src/utils/gbfs \
@@ -83,10 +77,7 @@ include $(LIBBUTANOABS)/butano.mak
 
 XCF ?= XCF_FILE_NEEDED
 
-.PHONY: rebuild sprites
-
-import:
-	node importer/src/importer.js
+.PHONY: sprites
 
 sprites:
 	rm -rf graphics/sprites/output graphics/sprites/export_layers.scm
@@ -94,6 +85,3 @@ sprites:
 	rm -rf graphics/sprites/output/_*
 	cp -rf graphics/sprites/output/* graphics
 	rm -rf graphics/sprites/output graphics/sprites/export_layers.scm
-
-rebuild: import
-	make -j$(shell nproc)

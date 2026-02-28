@@ -3,7 +3,6 @@
 
 #include "Scene.h"
 
-#include "../objects/Horse.h"
 #include "../objects/ui/Menu.h"
 
 class StartScene : public Scene {
@@ -15,7 +14,6 @@ class StartScene : public Scene {
 
  private:
   bn::optional<bn::regular_bg_ptr> background;
-  bn::unique_ptr<Horse> horse;
   bn::vector<bn::sprite_ptr, 64> textSprites;
   bn::sprite_text_generator textGenerator;
   bn::sprite_text_generator textGeneratorAccent;
