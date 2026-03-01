@@ -152,59 +152,8 @@
 #include "bn_regular_bg_items_the_saddest_story_dancing_output_00148.h"
 #include "bn_regular_bg_items_the_saddest_story_dancing_output_00149.h"
 #include "bn_regular_bg_items_the_saddest_story_dancing_output_00150.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00151.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00152.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00153.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00154.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00155.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00156.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00157.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00158.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00159.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00160.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00161.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00162.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00163.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00164.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00165.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00166.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00167.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00168.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00169.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00170.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00171.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00172.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00173.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00174.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00175.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00176.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00177.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00178.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00179.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00180.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00181.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00182.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00183.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00184.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00185.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00186.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00187.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00188.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00189.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00190.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00191.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00192.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00193.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00194.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00195.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00196.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00197.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00198.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00199.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00200.h"
-#include "bn_regular_bg_items_the_saddest_story_dancing_output_00201.h"
 
-const bn::array<bn::regular_bg_item, 201> frames = {
+const bn::array<bn::regular_bg_item, 150> frames = {
     bn::regular_bg_items::the_saddest_story_dancing_output_00001,
     bn::regular_bg_items::the_saddest_story_dancing_output_00002,
     bn::regular_bg_items::the_saddest_story_dancing_output_00003,
@@ -354,58 +303,7 @@ const bn::array<bn::regular_bg_item, 201> frames = {
     bn::regular_bg_items::the_saddest_story_dancing_output_00147,
     bn::regular_bg_items::the_saddest_story_dancing_output_00148,
     bn::regular_bg_items::the_saddest_story_dancing_output_00149,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00150,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00151,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00152,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00153,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00154,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00155,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00156,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00157,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00158,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00159,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00160,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00161,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00162,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00163,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00164,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00165,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00166,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00167,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00168,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00169,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00170,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00171,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00172,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00173,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00174,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00175,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00176,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00177,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00178,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00179,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00180,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00181,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00182,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00183,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00184,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00185,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00186,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00187,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00188,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00189,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00190,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00191,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00192,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00193,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00194,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00195,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00196,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00197,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00198,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00199,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00200,
-    bn::regular_bg_items::the_saddest_story_dancing_output_00201
+    bn::regular_bg_items::the_saddest_story_dancing_output_00150
 };
 
 bn::regular_bg_item TheSaddestStoryDancingVideo::getFrame(unsigned frame) {

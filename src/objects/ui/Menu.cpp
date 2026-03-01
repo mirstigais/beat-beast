@@ -7,6 +7,7 @@
 
 #define SFX_MOVE "menu_move.pcm"
 #define SFX_CLICK "menu_click.pcm"
+#define SFX_BACK "menu_back.pcm"
 #define SFX_PAUSE "menu_pause.pcm"
 #define SFX_QUESTION "menu_question.pcm"
 
@@ -176,6 +177,10 @@ void Menu::questionSound() {
 
 void Menu::clickSound() {
   player_sfx_play(SFX_CLICK);
+}
+
+void Menu::backSound() {
+  player_sfx_play(SFX_BACK);
 }
 
 void Menu::draw() {

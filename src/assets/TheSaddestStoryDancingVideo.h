@@ -5,7 +5,7 @@
 
 namespace TheSaddestStoryDancingVideo {
 
-constexpr unsigned framesCount = 201;
+constexpr unsigned framesCount = 150;
 
 bn::regular_bg_item getFrame(unsigned frame);
 

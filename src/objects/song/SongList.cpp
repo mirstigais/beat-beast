@@ -8,6 +8,7 @@
 #include "../../assets/MagicalTragedyVideo.h"
 #include "../../assets/IfYouBelieveItVideo.h"
 #include "../../assets/IamNotHumanVideo.h"
+#include "../../assets/ComfortVideo.h"
 
 namespace SongList {
     const Song songList[] = {
@@ -33,13 +34,6 @@ namespace SongList {
             .videoFramesCount = MagicalTragedyVideo::framesCount,
         },
         {
-            .name = "Battery acid",
-            .filename = "battery_acid.gsm",
-            .length = 176,
-            .getVideoFrame = StartVideo::getFrame,
-            .videoFramesCount = StartVideo::framesCount,
-        },
-        {
             .name = "If you believe it will heal you",
             .filename = "if_you_believe_it_will_heal_you.gsm",
             .length = 324,
@@ -52,6 +46,20 @@ namespace SongList {
             .length = 232,
             .getVideoFrame = IamNotHumanVideo::getFrame,
             .videoFramesCount = IamNotHumanVideo::framesCount,
+        },
+        {
+            .name = "Battery acid",
+            .filename = "battery_acid.gsm",
+            .length = 176,
+            .getVideoFrame = StartVideo::getFrame,
+            .videoFramesCount = StartVideo::framesCount,
+        },
+        {
+            .name = "My comfort characters commit suicide",
+            .filename = "my_comfort_characters_commit_suicide.gsm",
+            .length = 232,
+            .getVideoFrame = ComfortVideo::getFrame,
+            .videoFramesCount = ComfortVideo::framesCount,
         },
     };
 

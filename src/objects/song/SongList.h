@@ -5,7 +5,7 @@
 #include "bn_regular_bg_item.h"
 
 namespace SongList {
-    #define MAX_NAME_LEN 40
+    #define MAX_NAME_LEN 50
 
     struct Song {
         char name[MAX_NAME_LEN];

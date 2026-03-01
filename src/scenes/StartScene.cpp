@@ -34,7 +34,7 @@ void StartScene::init() {
   initOpeningMenu();
 
   if (!PlaybackState.isLooping) {
-    player_playGSM("battery_acid.gsm");
+    player_playGSM("my_comfort_characters_commit_suicide.gsm");
     player_setLoop(true);
   }
 }
@@ -60,6 +60,7 @@ void StartScene::update() {
 
       if(bn::keypad::b_pressed()) {
         songSelectMenu->stop();
+        songSelectMenu->backSound();
         initOpeningMenu();
       } else if (songSelectMenu->hasConfirmedOption()) {
         auto confirmedOption = songSelectMenu->receiveConfirmedOption();
@@ -111,7 +112,7 @@ void StartScene::processMenuOption(int option) {
   switch (option) {
     case 0: {  // Start
       menu->stop();
-      menu->questionSound();
+      menu->clickSound();
 
       bn::vector<Menu::Option, 32> options;
 
@@ -134,7 +135,7 @@ void StartScene::processMenuOption(int option) {
 
 void StartScene::processSongSelectMenuOption(int option) {  
   songSelectMenu->stop();
-  songSelectMenu->questionSound();
+  songSelectMenu->clickSound();
   GameState::data.currentSong = SongList::songList[option];
   GameState::data.currentSongIndex = option;
   setNextScreen(GameState::Screen::PLAYER);

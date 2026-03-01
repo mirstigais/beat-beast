@@ -35,6 +35,7 @@ class Menu {
   void pauseSound();
   void questionSound();
   void clickSound();
+  void backSound();
 
   bool hasStarted() { return options.has_value(); }
   bool hasConfirmedOption() { return confirmedOption > -1; }
