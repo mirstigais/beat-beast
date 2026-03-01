@@ -35,7 +35,7 @@ namespace SongList {
         {
             .name = "Battery acid",
             .filename = "battery_acid.gsm",
-            .length = 120,
+            .length = 176,
             .getVideoFrame = StartVideo::getFrame,
             .videoFramesCount = StartVideo::framesCount,
         },
@@ -49,7 +49,7 @@ namespace SongList {
         {
             .name = "I am not human but neither are you",
             .filename = "i_am_not_human_but_neither_are_you.gsm",
-            .length = 120,
+            .length = 232,
             .getVideoFrame = IamNotHumanVideo::getFrame,
             .videoFramesCount = IamNotHumanVideo::framesCount,
         },
