@@ -26,13 +26,6 @@ PlayerScene::PlayerScene(const GBFS_FILE* _fs)
 void PlayerScene::init() {
  	size_t current_index = GameState::data.currentSongIndex;
 	setCurrentSong(current_index);
-	// player_playGSM(currentSong.filename);
-
-
-//   if (!PlaybackState.isLooping) {
-//     player_playGSM(currentSong.filename);
-//     player_setLoop(true);
-//   }
 }
 
 void PlayerScene::setCurrentSong(size_t index) {
@@ -94,11 +87,13 @@ void PlayerScene::update() {
 	if (bn::keypad::right_pressed() || song_finished()) {
 		size_t current_index = (GameState::data.currentSongIndex + 1) % SongList::songCount;
 		setCurrentSong(current_index);
+        paused = false;
 	}
 
 	if (bn::keypad::left_pressed()) {
 		size_t current_index = (GameState::data.currentSongIndex + SongList::songCount - 1) % SongList::songCount;
 		setCurrentSong(current_index);
+        paused = false;
 	}
 
     if(scroll_enabled && !paused)
