@@ -48,18 +48,18 @@ namespace SongList {
             .videoFramesCount = IamNotHumanVideo::framesCount,
         },
         {
-            .name = "Battery acid",
+            .name = "Bonus track 1:My comfort characters commit suicide",
+            .filename = "my_comfort_characters_commit_suicide.gsm",
+            .length = 145,
+            .getVideoFrame = ComfortVideo::getFrame,
+            .videoFramesCount = ComfortVideo::framesCount,
+        },
+        {
+            .name = "Bonus track 2: Battery acid",
             .filename = "battery_acid.gsm",
             .length = 176,
             .getVideoFrame = StartVideo::getFrame,
             .videoFramesCount = StartVideo::framesCount,
-        },
-        {
-            .name = "My comfort characters commit suicide",
-            .filename = "my_comfort_characters_commit_suicide.gsm",
-            .length = 232,
-            .getVideoFrame = ComfortVideo::getFrame,
-            .videoFramesCount = ComfortVideo::framesCount,
         },
     };
 

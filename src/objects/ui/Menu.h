@@ -12,7 +12,7 @@ class Menu {
   bool isActive() const { return active; }
 
   struct Option {
-    bn::string<40> text;
+    bn::string<64> text;
     bool bDefault = false;
     int startSpriteIndex = 0;
     int endSpriteIndex = 0;

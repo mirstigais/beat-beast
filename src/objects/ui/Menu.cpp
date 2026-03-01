@@ -195,9 +195,9 @@ void Menu::draw() {
 
     auto startSpriteIndex = normalTextSprites.size();
     
-    bn::string<40> text = options->at(optionIndex).text;
+    bn::string<64> text = options->at(optionIndex).text;
     if (text.length() > 18) {
-      bn::string<40> truncated;
+      bn::string<64> truncated;
       truncated.append(text.data(), 15);
       truncated.append("...");
       normalTextGenerator.generate(positionX, positionY + startY + i * 16,
@@ -246,11 +246,11 @@ void Menu::drawSelected() {
      int visibleCount = bn::min((int)options->size(), maxVisibleOptions);
      bn::fixed startY = -(visibleCount * 16 - 8) / 2 + 3;
      
-     bn::string<40> text = options->at(selectedOption).text;
+     bn::string<64> text = options->at(selectedOption).text;
      
      if (text.length() > 18) {
         // Scrolling marquee
-        bn::string<128> paddedText;
+        bn::string<256> paddedText;
         paddedText.append(text);
         paddedText.append("   ");
         paddedText.append(text);
