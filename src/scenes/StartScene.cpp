@@ -124,7 +124,7 @@ void StartScene::processMenuOption(int option) {
       break;
     }
     case 1: {  // Credits
-      player_playGSM("bonus.gsm");
+      player_playGSM("magical_tragedy_aligned.gsm");
       credits = true;
       break;
     }

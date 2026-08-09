@@ -22,7 +22,7 @@ namespace SongList {
         {
             .name = "I am a product",
             .filename = "i_am_a_product.gsm",
-            .length = 444,
+            .length = 195,
             .getVideoFrame = ProductVideo::getFrame,
             .videoFramesCount = ProductVideo::framesCount,
         },
