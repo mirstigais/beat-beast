@@ -23,6 +23,7 @@ bool initialize();
 bool isValid();
 void load();
 void save();
+bool available();
 void wipe();
 
 }  // namespace SaveFile

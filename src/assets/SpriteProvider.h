@@ -6,8 +6,6 @@
 namespace SpriteProvider {
 
 bn::sprite_item menu();
-bn::sprite_item wait();
-bn::sprite_item progress();
 
 }  // namespace SpriteProvider
 

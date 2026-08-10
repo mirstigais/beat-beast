@@ -186,7 +186,11 @@ typedef struct { u32 data[16]; } TILE8;
 
 #ifndef __cplusplus
 //! Boolean type
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L
+/* C23 already defines bool, true, and false as keywords. */
+#else
 typedef enum { false, true } bool;
+#endif
 #endif
 
 #ifndef BOOL

@@ -8,29 +8,28 @@
 
 BN_DATA_EWRAM SaveFile::SaveFileData SaveFile::data;
 
+static bool sram_available = true;
+
 #define MAGIC_NUMBER 135795136
 
 bool SaveFile::initialize() {
-  load();
+  // Do not require SRAM on this build. Keep settings in RAM with defaults.
+  data.magicNumber = MAGIC_NUMBER;
+  data.audioLag = 0;
+  data.didCalibrate = false;
+  data.rumble = true;
+  data.bgBlink = false;
+  data.intensity = 0;
+  data.contrast = 0;
+  for (int i = 0; i < 3; i++)
+    data._padding1[i] = 0xEE;
 
-  if (!isValid()) {
-    data.magicNumber = MAGIC_NUMBER;
-    data.audioLag = 0;
-    data.didCalibrate = false;
-    data.rumble = true;
-    data.bgBlink = false;
-    data.intensity = 0;
-    data.contrast = 0;
-    for (int i = 0; i < 3; i++)
-      data._padding1[i] = 0xEE;
+  sram_available = false;
+  return true;
+}
 
-
-
-    save();
-
-    return true;
-  } else
-    return false;
+bool SaveFile::available() {
+  return sram_available;
 }
 
 bool SaveFile::isValid() {
@@ -49,16 +48,22 @@ bool SaveFile::isValid() {
 
 
 void SaveFile::load() {
-  bn::sram::read(data);
+  if (sram_available) {
+    bn::sram::read(data);
+  }
 }
 
 void SaveFile::save() {
-  bn::sram::write(data);
+  if (sram_available) {
+    bn::sram::write(data);
+  }
 }
 
 void SaveFile::wipe() {
   data.magicNumber = 1;
-  save();
+  if (sram_available) {
+    save();
+  }
 
   player_stop();
   player_sfx_stop();
